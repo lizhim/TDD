@@ -47,3 +47,24 @@ function judge_format_right_or_not(count){
     }
     return guess_number_equal_random_number(count,guess_number);
 }
+function guess_number_equal_random_number(count,guess_number){
+    var times=localStorage.getItem("guess_time")
+    var comparison_result =compare_counter_and_guess_number(count,guess_number)
+    if(comparison_result=="4A0B"&&times<=5){
+        display_content("猜测正确")
+        guess_button_is_clicked_or_not(true);
+    }
+    guess_fail(count,guess_number,comparison_result,times);
+}
+function guess_fail(count,guess_number,comparison_result,times){
+    if(comparison_result!="4A0B"&&times==5){
+        display_content("猜测错误,您已猜测6次,数字是"+count)
+        guess_button_is_clicked_or_not(true);
+    }
+    guess_continue(guess_number,comparison_result,times)
+}
+function guess_continue(guess_number,comparison_result,times){
+    if(comparison_result!="4A0B"&&times<5&&guess_number.length==4){
+        display_content(comparison_result)
+    }
+}
