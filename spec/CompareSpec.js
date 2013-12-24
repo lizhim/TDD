@@ -1,7 +1,10 @@
-describe("Compare the number of guesses and random number",function(){
+describe("Compare the number of guesses",function(){
     var counter='9203'
     beforeEach(function(){
         var guess_number;
+    });
+    afterEach(function(){
+        clear()
     });
     it("should be 0A0B when guess_number is '5678'",function(){
         var guess_number='5678';
