@@ -31,3 +31,12 @@ function get_number_of_B(counter,guess_number,number_of_B,i){
     }
     return B;
 }
+function judge_start_or_not(){
+    var count=localStorage.getItem("count")||''
+    if(count==''){
+        display_content("尚未开始")
+        return;
+    }
+    return judge_format_right_or_not(count);
+}
+
