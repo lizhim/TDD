@@ -8,11 +8,13 @@ function compare_counter_and_guess_number(counter,guess_number) {
     accumulate_times()
     return  number_of_A+"A"+number_of_B+"B" ;
 }
+
 function accumulate_times(){
     var times=JSON.parse(localStorage.getItem("guess_time"))
     times=times+1;
     localStorage.setItem("guess_time",JSON.stringify(times))
 }
+
 function get_number_of_A(counter,guess_number,number_of_A,i){
     var A=number_of_A;
     for(var j=0;j<4;j++){
@@ -22,6 +24,7 @@ function get_number_of_A(counter,guess_number,number_of_A,i){
     }
     return A;
 }
+
 function get_number_of_B(counter,guess_number,number_of_B,i){
     var B=number_of_B;
     for(var j=0;j<4;j++){
@@ -31,6 +34,7 @@ function get_number_of_B(counter,guess_number,number_of_B,i){
     }
     return B;
 }
+
 function judge_start_or_not(){
     var count=localStorage.getItem("count")||''
     if(count==''){
@@ -39,6 +43,7 @@ function judge_start_or_not(){
     }
     return judge_format_right_or_not(count);
 }
+
 function judge_format_right_or_not(count){
     var guess_number=get_input();
     if(guess_number.length!=4||judge_number_repeat_or_not(guess_number)==true){
@@ -47,6 +52,7 @@ function judge_format_right_or_not(count){
     }
     return guess_number_equal_random_number(count,guess_number);
 }
+
 function guess_number_equal_random_number(count,guess_number){
     var times=localStorage.getItem("guess_time")
     var comparison_result =compare_counter_and_guess_number(count,guess_number)
@@ -56,6 +62,7 @@ function guess_number_equal_random_number(count,guess_number){
     }
     guess_fail(count,guess_number,comparison_result,times);
 }
+
 function guess_fail(count,guess_number,comparison_result,times){
     if(comparison_result!="4A0B"&&times==5){
         display_content("猜测错误,您已猜测6次,数字是"+count)
@@ -63,6 +70,7 @@ function guess_fail(count,guess_number,comparison_result,times){
     }
     guess_continue(guess_number,comparison_result,times)
 }
+
 function guess_continue(guess_number,comparison_result,times){
     if(comparison_result!="4A0B"&&times<5&&guess_number.length==4){
         display_content(comparison_result)

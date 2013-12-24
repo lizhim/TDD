@@ -11,12 +11,14 @@ function create_random_number () {
     localStorage.guess_time="0";
     return count;
 }
+
 function is_equal_random_number (random_number, count) {
     var b = _.some(count, function (list) {
         return list == random_number;
     })
     return b;
 }
+
 function judge_number_repeat_or_not (random_number) {
     if(random_number!=''){
         for (var m = 0; m < 3; m++) {
@@ -24,8 +26,8 @@ function judge_number_repeat_or_not (random_number) {
         }
     }
     return false;
-
 }
+
 function get_counter_n (random_number, m) {
     for (var n = m + 1; n < 4; n++) {
         if (random_number[m] == random_number[n]) {
@@ -33,6 +35,7 @@ function get_counter_n (random_number, m) {
         }
     }
 }
+
 function judge_number_random_or_not(){
     var number=[]
     for(var i=0;i<1000;i++){
@@ -43,6 +46,7 @@ function judge_number_random_or_not(){
         return true;
     }
 }
+
 function get_group_number(number){
     var group_number= _.groupBy(number,function(list){
         return list.random_number
@@ -53,6 +57,7 @@ function get_group_number(number){
     })
     return group_number_array;
 }
+
 function get_max_length (number) {
     var max=_.max(get_group_number(number), function (num) {
         return num.length;
