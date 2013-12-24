@@ -33,3 +33,29 @@ function get_counter_n (random_number, m) {
         }
     }
 }
+function judge_number_random_or_not(){
+    var number=[]
+    for(var i=0;i<1000;i++){
+        var random_number= create_random_number ();
+        number.push({"random_number":random_number})
+    }
+    if(get_max_length (number).length<10){
+        return true;
+    }
+}
+function get_group_number(number){
+    var group_number= _.groupBy(number,function(list){
+        return list.random_number
+    })
+    var group_number_array=[];
+    _.map(group_number,function(value,key){
+        group_number_array.push({"number":key,"length":value.length})
+    })
+    return group_number_array;
+}
+function get_max_length (number) {
+    var max=_.max(get_group_number(number), function (num) {
+        return num.length;
+    })
+    return max;
+}
