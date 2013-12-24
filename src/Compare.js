@@ -39,4 +39,11 @@ function judge_start_or_not(){
     }
     return judge_format_right_or_not(count);
 }
-
+function judge_format_right_or_not(count){
+    var guess_number=get_input();
+    if(guess_number.length!=4||judge_number_repeat_or_not(guess_number)==true){
+        display_content("格式错误")
+        return;
+    }
+    return guess_number_equal_random_number(count,guess_number);
+}
